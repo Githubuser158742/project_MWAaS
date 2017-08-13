@@ -1,0 +1,22 @@
+{
+  "name": "Peper & Zout",
+  "short_name": "P&Z",
+  "description": "Een applicatie om recepten bij te houden en te beoordelen.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#22AADD",
+  "icons": [
+    {
+      "src": "assets/icons/new-standard.png",
+      "sizes": "310x310",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/icon512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "background_color": "#252525"
+}
