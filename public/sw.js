@@ -3,13 +3,13 @@ self.addEventListener('install', function(event) {
         return cache.addAll([
             '/',
             'index.html',
-            'assets/css/style.css',
+            'assets/css/style.min.css',
             'assets/res/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css',
             'assets/res/font-awesome-4.7.0/css/font-awesome.min.css',
             'assets/res/jquery/jquery.min.js',
             'assets/res/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js',
-            'assets/res/localforage.min.js',
-            'assets/js/app.js'
+            'assets/js/app.min.js',
+            'assets/res/localforage.min.js'
         ]);
     }));
 });
