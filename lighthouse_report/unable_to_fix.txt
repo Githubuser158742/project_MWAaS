@@ -1,0 +1,3 @@
+- faster loadtime for jquery mobile css
+- set user-scalable to yes in meta tag
+  * is changed by jquery-mobile and can't be reset
