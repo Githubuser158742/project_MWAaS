@@ -39,6 +39,14 @@
     "category": "meat",
     "steps": "1 - Smijt de viandel in de frituur. 2 - Snij een halve ajuin in fijne snippers. 3 - Haal de viandel uit de frituur en snij deze doormidden. 4 - Serveer met ketchup en uitjes in de snee.",
     "added": "09/08/2017"
+    },
+    {
+    "id": 6,
+    "description": "XSS",
+    "chef": "Chef Malafide",
+    "category": "meat",
+    "steps": "<script>alert('oei');</script>",
+    "added": "09/08/2017"
     }
   ]
 }

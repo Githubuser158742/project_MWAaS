@@ -217,10 +217,10 @@ $(function() {
         }
         if ((app.customvalues[recipe.id] !== null) && (app.customvalues[recipe.id] !== undefined)) {
           if (app.customvalues[recipe.id].score !== null) {
-            score = app.customvalues[recipe.id].score;
+            score = escapeHTML(app.customvalues[recipe.id].score);
           }
           if (app.customvalues[recipe.id].comment !== null) {
-            comment = app.customvalues[recipe.id].comment;
+            comment = escapeHTML(app.customvalues[recipe.id].comment);
           }
           if (app.customvalues[recipe.id].saved !== null && pagetype == 2) {
             showSavedElements = true;
@@ -230,18 +230,25 @@ $(function() {
         }
       }
 
+      //escape HTML (XSS filter)
+      var uniqueid = escapeHTML(recipe.id.toString())
+      var description = escapeHTML(recipe.description.toString())
+      var chef = escapeHTML(recipe.chef.toString())
+      var added = escapeHTML(recipe.added.toString())
+      var steps = escapeHTML(recipe.steps.toString())
+
       if (showAllElements) {
         var element = ([
           "<div class='ui-bar ui-bar-b'>",
               "<div class='ui-grid-a'><center>",
-              "<input class='checkboxrecipe' id='checkBox" + recipe.id.toString() + "' data-recipe='" + recipe.id.toString() + "' type='checkbox'>" + recipe.description.toString() + "</center></div>",
+              "<input class='checkboxrecipe' id='checkBox" + uniqueid + "' data-recipe='" + uniqueid + "' type='checkbox'>" + description + "</center></div>",
               "<div class='ui-grid-a'>",
-                "<div class='ui-block-a'><center>" + recipe.chef.toString() + "</center></div>",
-                "<div class='ui-block-b'><center>" + recipe.added.toString() + "</center></div>",
+                "<div class='ui-block-a'><center>" + chef + "</center></div>",
+                "<div class='ui-block-b'><center>" + added + "</center></div>",
               "</div>",
                 "<center><div data-role='collapsible' id='" + id + "' class='ui-collapsible ui-collapsible-inset ui-corner-all ui-collapsible-themed-content'>",
                   "<h4 class='ui-collapsible-heading'>Stappenplan</h4>",
-                      "<p>" + recipe.steps.toString() + "</p>",
+                      "<p>" + steps + "</p>",
               "</center></div>",
           "</div>"
         ].join(" "));
@@ -254,19 +261,19 @@ $(function() {
         var element = ([
           "<div class='ui-bar ui-bar-b'>",
             "<div class='ui-grid-a'>",
-              "<center>" + recipe.description.toString() + "</center>",
+              "<center>" + description + "</center>",
             "</div>",
             "<div class='ui-grid-a'>",
               "<div class='ui-block-a'>",
-                "<center>" + recipe.chef.toString() + "</center>",
+                "<center>" + chef + "</center>",
               "</div>",
               "<div class='ui-block-b'>",
-                "<center>" + recipe.added.toString() + "</center>",
+                "<center>" + added + "</center>",
               "</div>",
             "</div>",
           "<div data-role='collapsible' id='" + id + "' class='ui-collapsible ui-collapsible-inset ui-corner-all ui-collapsible-themed-content'>",
               "<h4 class='ui-collapsible-heading'>Stappenplan</h4>",
-                  "<p>" + recipe.steps.toString() + "</p>",
+                  "<p>" + steps + "</p>",
           "</div>",
           "<div data-role='fieldcontain'>",
           "<div class='ui-grid-a'>",
@@ -319,22 +326,20 @@ $(function() {
         $("#" + id).append(element);
         $("#" + id).trigger("create");
         counter++;
-        //console.log("Added element: " + JSON.stringify(recipe));
-        //console.log("id: " + id);
       }
 
       if (showRatedElements) {
         var element = ([
           "<div class='ui-bar ui-bar-b'>",
           "<div class='ui-grid-a'>",
-            recipe.description.toString(),
+            description,
           "</div>",
           "<div class='ui-grid-a'>",
           "<div class='ui-block-a'>",
-            recipe.chef.toString(),
+            chef,
           "</div>",
           "<div class='ui-block-b'>",
-            recipe.added.toString(),
+            added,
           "</div>",
           "</div>",
           "<div class='ui-grid-a'>",
@@ -349,7 +354,7 @@ $(function() {
           "</div>",
           "<div data-role='collapsible' id='" + id + "' class='ui-collapsible ui-collapsible-inset ui-corner-all ui-collapsible-themed-content'>",
               "<h4 class='ui-collapsible-heading'>Stappenplan</h4>",
-                  "<p>" + recipe.steps.toString() + "</p>",
+                  "<p>" + steps + "</p>",
           "</div>",
           "</div>"
         ].join(" "));
